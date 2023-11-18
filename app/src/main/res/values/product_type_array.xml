@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="product_types">
+        <item>Clothing</item>
+        <item>Food And Beverages</item>
+        <item>Home Furniture</item>
+        <item>Service</item>
+        <item>Toys</item>
+        <item>Utensils</item>
+        <item>Electronics</item>
+        <item>Essentials</item>
+    </array>
+</resources>
