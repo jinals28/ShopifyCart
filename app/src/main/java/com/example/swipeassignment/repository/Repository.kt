@@ -59,12 +59,10 @@ class Repository(private val apiService: APIService) {
                 response: Response<ProductResponse>
             ) {
                 if (response.isSuccessful){
-                    Log.d("Repo" ,"Successful ${response.body()}")
                     val data = response.body()
                     callback(Result.Success(data!!))
                 }else{
-                    Log.d("Repo", "successful bt empty ${response.message() + response.errorBody()}")
-                    callback(Result.Error(response.errorBody()!!.toString()))
+                    callback(Result.Error("Failed To Add Product"))
                 }
             }
 

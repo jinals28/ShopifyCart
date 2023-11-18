@@ -35,7 +35,7 @@ class HomeViewModel(private val repository: Repository) : ViewModel() {
                     _productList.value = result.data!!
                 }
                 is Result.Error -> {
-                    handleAPIError(result.errorMessage)
+                    handleAPIError("Try Again After Some Time")
                     _isLoading.value = false
                 }
 
