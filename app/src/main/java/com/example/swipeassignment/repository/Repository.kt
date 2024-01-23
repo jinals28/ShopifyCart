@@ -18,6 +18,7 @@ class Repository(private val apiService: APIService) {
 
     fun getProductList(callback: (Result<List<Product>>) -> Unit) {
         val call = apiService.getProductList()
+
         call.enqueue(object : Callback<List<Product>> {
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
                 if (response.isSuccessful) {
