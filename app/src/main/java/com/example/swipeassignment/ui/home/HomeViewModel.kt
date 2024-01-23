@@ -26,7 +26,6 @@ class HomeViewModel(private val repository: Repository) : ViewModel() {
         fetchData()
     }
 
-
     private fun fetchData(){
         _isLoading.value = true
         repository.getProductList { result ->

@@ -40,15 +40,33 @@ class AddProductViewModel(private val repository: Repository) : ViewModel() {
 
         val errors = mutableListOf<Result.ValidationFailure>()
 
-        if (name.isEmpty()){
-            errors.add(Result.ValidationFailure.InvalidName("Incorrect Name"))
+        if (name.isBlank()) {
+
+            errors.add(Result.ValidationFailure.InvalidName("Name cannot be empty"))
+
+        } else if (!name.matches(Regex("^[a-zA-Z]+\$"))) {
+
+            errors.add(Result.ValidationFailure.InvalidName("Name should only contain alphabets"))
+
         }
+
         if (price <= 0 ) {
-            errors.add(Result.ValidationFailure.InvalidPrice("Price can not be negative"))
+            if(price == 0.0){
+                errors.add(Result.ValidationFailure.InvalidPrice("Price can not be zero"))
+            }else{
+                errors.add(Result.ValidationFailure.InvalidPrice("Price can not be negative"))
+            }
+
         }
-        if (tax <= 0){
-            errors.add(Result.ValidationFailure.InvalidTax("Tax can not be error"))
+        if (tax <= 0 ) {
+            if(tax == 0.0){
+                errors.add(Result.ValidationFailure.InvalidTax("Tax can not be zero"))
+            }else{
+                errors.add(Result.ValidationFailure.InvalidTax("Tax can not be negative"))
+            }
+
         }
+
 
         return if (errors.isEmpty()) {
             _validationResult.value = Result.Success(Unit)
